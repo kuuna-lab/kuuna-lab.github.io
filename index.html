@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KUUNA ｜ 空海 — Music & KUUNA Lab</title>
+<meta name="description" content="音楽をつくるKUUNA（空海）と、ホームページ・MV制作のKUUNA Lab。">
+<meta property="og:title" content="KUUNA ｜ 空海">
+<meta property="og:description" content="音楽をつくるKUUNA（空海）と、ホームページ・MV制作のKUUNA Lab。">
+<meta property="og:image" content="images/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;700&family=Shippori+Mincho:wght@600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0b0e17; --bg2:#121726; --card:#171d2f; --line:#26304a;
+    --text:#e8ecf5; --muted:#9aa4bd; --blue:#4a6cf7; --blue2:#7f9bff; --amber:#f0b35a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:"Zen Kaku Gothic New",system-ui,sans-serif;line-height:1.9;letter-spacing:.03em}
+  a{color:inherit}
+  img{max-width:100%;display:block}
+
+  /* header */
+  header{position:fixed;inset:0 0 auto 0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:linear-gradient(#0b0e17cc,#0b0e1700)}
+  .logo{font-weight:700;font-size:20px;letter-spacing:.25em;text-decoration:none}
+  nav a{margin-left:20px;font-size:14px;text-decoration:none;color:var(--muted)}
+  nav a:hover{color:var(--text)}
+
+  /* hero */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:center;padding:0 6vw;
+        background:url("images/hero.jpg") center right/cover no-repeat}
+  .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#0b0e17 0%,#0b0e17d9 35%,#0b0e1700 70%)}
+  .hero-inner{position:relative;max-width:520px}
+  .hero h1{font-family:"Shippori Mincho",serif;font-size:clamp(48px,9vw,96px);line-height:1.1;letter-spacing:.12em}
+  .hero .kana{display:block;font-size:.32em;letter-spacing:.6em;color:var(--blue2);margin-top:8px}
+  .hero p{margin-top:24px;color:#cfd6e6}
+  .btns{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-block;padding:12px 26px;border-radius:999px;text-decoration:none;font-weight:700;font-size:15px}
+  .btn-main{background:var(--blue);color:#fff}
+  .btn-sub{border:1px solid var(--line);background:#0b0e1780}
+  .btn:hover{opacity:.85}
+
+  /* sections */
+  section{padding:110px 6vw}
+  .wrap{max-width:1040px;margin:0 auto}
+  .label{font-size:13px;letter-spacing:.4em;color:var(--blue2)}
+  h2{font-family:"Shippori Mincho",serif;font-size:clamp(28px,4vw,40px);margin:6px 0 28px;letter-spacing:.08em}
+  .lead{color:#cfd6e6;max-width:680px}
+  .alt{background:var(--bg2)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:40px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .card h3{font-size:19px;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:15px}
+  .tag{display:inline-block;font-size:12px;padding:2px 10px;border-radius:999px;background:#4a6cf726;color:var(--blue2);margin-bottom:12px}
+  .song{text-decoration:none;transition:border-color .2s,transform .2s}
+  .song:hover{border-color:var(--blue);transform:translateY(-2px)}
+  .song p{color:var(--blue2)}
+  .song{padding:16px 16px 22px}
+  .cover{width:100%;aspect-ratio:1;object-fit:cover;border-radius:10px;margin-bottom:16px}
+  .song .tag,.song h3,.song p{margin-left:6px}
+  .song small{font-size:.75em;color:var(--muted)}
+
+  ol.flow{counter-reset:s;list-style:none;margin-top:36px;display:grid;gap:14px}
+  ol.flow li{counter-increment:s;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 20px 16px 64px;position:relative}
+  ol.flow li::before{content:counter(s);position:absolute;left:20px;top:14px;width:30px;height:30px;border-radius:50%;background:var(--amber);color:#1a1205;font-weight:700;display:grid;place-items:center}
+  ol.flow b{display:block}
+  ol.flow span{color:var(--muted);font-size:14px}
+
+  .contact{text-align:center}
+  .contact .lead{margin:0 auto}
+  .contact .btns{justify-content:center}
+
+  footer{padding:36px 6vw;text-align:center;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+
+  @media (max-width:640px){
+    header{padding:12px 16px}
+    nav a{margin-left:12px;font-size:13px}
+    .hero{padding:0 16px;align-items:flex-end;padding-bottom:12vh;background-position:84% center}
+    .hero::before{background:linear-gradient(0deg,#0b0e17 0%,#0b0e17cc 45%,#0b0e1733 100%)}
+    section{padding:80px 16px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">KUUNA</a>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#music">Music</a>
+    <a href="#lab">Lab</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="hero-inner">
+      <h1>KUUNA<span class="kana">空 海</span></h1>
+      <p>音をつくる。映像をつくる。ページをつくる。<br>好きな空と海のように、ひろく自由に。</p>
+      <div class="btns">
+        <a class="btn btn-main" href="#lab">お仕事のご相談</a>
+        <a class="btn btn-sub" href="#music">音楽を聴く</a>
+      </div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <div class="label">ABOUT</div>
+      <h2>KUUNAについて</h2>
+      <p class="lead">
+        KUUNA（空海）は、ベースとギターを弾きながら曲をつくるアーティストです。<br>
+        名前の「空海」は、好きな空と海から。<br>
+        音楽に囲まれて生きることを目標に、曲づくり・映像づくり・ホームページづくりをしています。<br>
+        いつか、音楽とお酒が集まる場所をつくるのが夢です。
+      </p>
+    </div>
+  </section>
+
+  <section id="music" class="alt">
+    <div class="wrap">
+      <div class="label">MUSIC</div>
+      <h2>音楽</h2>
+      <p class="lead">各音楽配信サービスで配信中です。</p>
+      <div class="grid">
+        <a class="card song" href="https://linkco.re/NYdnyNBd" target="_blank" rel="noopener">
+          <img class="cover" src="images/cover_eien.png" alt="永遠保存 ジャケット" loading="lazy">
+          <div class="tag">2026.04.07</div>
+          <h3>永遠保存</h3>
+          <p>聴く →</p>
+        </a>
+        <a class="card song" href="https://linkco.re/9bCDMcra" target="_blank" rel="noopener">
+          <img class="cover" src="images/cover_ontheway.png" alt="On the Way ジャケット" loading="lazy">
+          <div class="tag">2026.08.19</div>
+          <h3>On the Way</h3>
+          <p>聴く →</p>
+        </a>
+        <a class="card song" href="https://linkco.re/d9u15ePY" target="_blank" rel="noopener">
+          <img class="cover" src="images/cover_ontheway_re.png" alt="On the Way (Rearranged Version) ジャケット" loading="lazy">
+          <div class="tag">2026.09.10</div>
+          <h3>On the Way <small>(Rearranged Version)</small></h3>
+          <p>聴く →</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section id="lab">
+    <div class="wrap">
+      <div class="label">KUUNA LAB</div>
+      <h2>お仕事のご依頼</h2>
+      <p class="lead">KUUNA Labでは、お店や個人の方の「見せたいもの」をかたちにするお手伝いをしています。小さなお店・はじめての方も大歓迎です。</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="tag">Web</div>
+          <h3>ホームページ制作</h3>
+          <p>ホームページがない・古くなったお店や活動のために、スマホでも見やすいページをつくります。メニュー・営業時間・地図・SNSへのリンクなど、必要なものだけをシンプルに。</p>
+        </div>
+        <div class="card">
+          <div class="tag">Movie</div>
+          <h3>MV・ショート動画制作</h3>
+          <p>曲に合わせたミュージックビデオや、SNS用の短い動画をつくります。AIで作った曲のMVもご相談ください。</p>
+        </div>
+      </div>
+
+      <ol class="flow">
+        <li><b>ご相談</b><span>やりたいこと・イメージを気軽に送ってください。</span></li>
+        <li><b>お見積もり（無料）</b><span>内容をうかがって、金額と日程をお伝えします。</span></li>
+        <li><b>制作</b><span>途中で確認しながら進めます。</span></li>
+        <li><b>納品・公開</b><span>公開後のちょっとした修正もご相談ください。</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="contact" class="alt contact">
+    <div class="wrap">
+      <div class="label">CONTACT</div>
+      <h2>お問い合わせ</h2>
+      <p class="lead">ご依頼・ご相談は、InstagramのDMからお気軽にどうぞ。<br>お見積もりは無料です。</p>
+      <div class="btns">
+        <a class="btn btn-main" href="https://www.instagram.com/kuuna.lab/" target="_blank" rel="noopener">Instagramで相談する（@kuuna.lab）</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>© <span id="y"></span> KUUNA / KUUNA Lab</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
